@@ -1,0 +1,32 @@
+.shopping-cart {
+   display: grid;
+   grid-template-columns: 1fr 2fr 1fr 1fr;
+   margin: auto;
+   align-items: center;
+   box-shadow: 1px 1px 5px #d6d5d5;
+   margin: 10px;
+   padding: 10px 50px 10px 50px;
+}
+
+.shopping-cart img {
+    height: 100px;
+    margin-right: 50px;
+}
+.shopping-cart .fas {
+    color: red;
+    font-size: 30px;
+}
+.total-price {
+    border-top: 1px solid #929292;
+    padding: 10px;
+    text-align: left;
+}
+.remove-btn {
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.remove-btn:hover {
+  transform: scale(1.05);
+}
