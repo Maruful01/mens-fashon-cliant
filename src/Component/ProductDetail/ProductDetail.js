@@ -11,7 +11,7 @@ const ProductDetail = (props) => {
     pdId.toString()
     const [product, setProduct] = useState([{img: null, title: null, price: null, detail: null}]);
     useEffect (() => {
-        fetch ('http://localhost:5000/product?id='+pdId[1])
+        fetch ('https://immense-citadel-20616.herokuapp.com/product?id='+pdId[1])
         .then (res => res.json())
         .then (data => setProduct (data))
     }, [pd])

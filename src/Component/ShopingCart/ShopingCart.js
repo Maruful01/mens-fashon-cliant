@@ -46,7 +46,7 @@ const ShopingCart = () => {
                 <div className="total-price">
                     <h2>Subtotal {getCartCount()} items</h2>
                     <h3>Total price: {getCartSubTotal()} </h3> 
-                    <button 
+                    <Link to="/address"> <button 
                          style={{background: "none",
                           border: "none",
                            outline: "none",
@@ -58,6 +58,7 @@ const ShopingCart = () => {
                             borderRadius: "5px"}}>
                         Order now
                     </button>
+                    </Link>
                 </div>
                 
             </div> 

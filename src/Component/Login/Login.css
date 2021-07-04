@@ -1,0 +1,80 @@
+.login-component {
+    margin-top: 100px;
+    display: grid;
+}
+.sign-up {
+   width: 50%;
+   text-align: left;
+   margin: auto;
+
+}
+.sign-up input{
+    border: none;
+    background: none;
+    outline: none;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 70%;
+    padding: 5px;
+    margin: 5px;
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: lighter;
+    height: 30px;
+    background-color: #ffffffa6;
+
+}
+.login {
+    width: 50%;
+    text-align: left;
+    margin: auto;
+}
+.login input{
+    border: none;
+    background: none;
+    outline: none;
+    border-bottom: 1px solid gainsboro;
+    font-size: 16px;
+    width: 70%;
+    padding: 5px;
+    margin: 5px;
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: lighter;
+    height: 30px;
+    background-color: #ffffffa6;
+
+}
+.submit-btn {
+    background: none;
+    border: none;
+    outline: none;
+    background-color: rgb(255, 123, 0);
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+    padding: 5px 15px;
+    position: relative;
+    left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.submit-btn:hover {
+    border: none;
+    outline: none;
+    background-color: #d86902;
+}
+.google {
+    background-color: #e75a41f6;
+    margin-right: 5px;
+}
+.google:hover {
+    background-color: #ac412ef6;
+}
+.facebook {
+    background-color: #0e6eff;
+}
+.facebook:hover {
+    background-color: #0954c5;
+}

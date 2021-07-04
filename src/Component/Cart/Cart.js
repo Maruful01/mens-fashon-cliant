@@ -8,8 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 const Cart = (props) => {
-     
-    const [pid, setPd] = useContext (UserContext);
+    
 
     let history = useHistory();
     const [ qty, setQty ] = useState (1);

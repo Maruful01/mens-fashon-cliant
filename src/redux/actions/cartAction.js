@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const addToCart = ( id, qty, img, price ) =>  async (dispatch, getState) => {
 
-    const { data } = await axios.get(`http://localhost:5000/product?id=${id}`);
+    const { data } = await axios.get(`https://immense-citadel-20616.herokuapp.com/product?id=${id}`);
     
     dispatch ({
         type: actionTypes.ADD_TO_CART,

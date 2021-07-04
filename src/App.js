@@ -8,6 +8,7 @@ import {
   Link
 } from "react-router-dom";
 import Home from './Component/Home/Home';
+import Address from './Component/Address/Address'
 import Logo from './Component/boyz.png'
 import Settings from './Component/Settings/Settings';
 import ShopingCart from './Component/ShopingCart/ShopingCart';
@@ -15,11 +16,12 @@ import ProductDetail from './Component/ProductDetail/ProductDetail';
 import { useState } from 'react';
 import { createContext } from 'react';
 import { useSelector } from 'react-redux';
+import Login from './Component/Login/Login';
 
 export const UserContext =  createContext ();
 
 const App = (props) => {
-  const [pid, setPd] = useState (null);
+  const [loggedInUser, setLoggedInUser] = useState ({name: null, email: null, password: null, image: null, mobile: null});
   const cartProduct =  props.cardData;
 
   const cart = useSelector((state) => state.cart);
@@ -49,7 +51,7 @@ const App = (props) => {
                  </li>
 
                  <li>
-                    <Link style={{textDecoration: "none", color: "gray"}} to="/about"><i class="fas fa-user"></i></Link>
+                    <Link style={{textDecoration: "none", color: "gray"}} to="/login">{loggedInUser.image ? <img style={{height: "50px", borderRadius: "50%"}} src={loggedInUser.image} alt="" /> : <i class="fas fa-user"></i>  }</Link> 
                   </li>
 
                  <li>
@@ -58,7 +60,7 @@ const App = (props) => {
                  
               </ul>
            </nav>
-           <UserContext.Provider value={[pid, setPd]}>
+           <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
        <Switch>
             <Route path="/cart">
                  <ShopingCart />
@@ -71,6 +73,13 @@ const App = (props) => {
              </Route>
              <Route path="/settings">
                  <Settings/>
+             </Route>
+             <Route path="/address">
+                 <Address/>
+             </Route>
+
+             <Route path="/login">
+                 <Login/>
              </Route>
              <Route path="*" >
                   <Home/>
