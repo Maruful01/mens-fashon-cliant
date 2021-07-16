@@ -1,5 +1,5 @@
 .cart img {
-    height: 300px;
+    height: 250px;
     width: 100%;
     object-fit: contain;
     box-shadow: 1px 1px 5px #ebebeb;
@@ -8,6 +8,11 @@
 .cart {
     padding: 10px;
     box-shadow: 1px 1px 10px #e7e7e7;
+    border-radius: 3px;
+}
+
+.cart:hover {
+    box-shadow: 0.2px 0.2px 10px #a5a5a5;
 }
 .cart button {
     width: 100%;
@@ -15,15 +20,16 @@
     outline: none;
     background: none;
     font-size: 15px;
-    color: #ffffff;
+    color: gray;
     border-radius: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
     cursor: pointer;
     /*  */
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background: white;
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
+    border: 1px solid #e2e2e2;
 }
 @keyframes gradient {
 	0% {
@@ -37,11 +43,34 @@
 	}
 }
 .cart button:hover {
-    
-    color: #000000;
-    background: #a1ffb1;
     transform: scale(1.02);
 }
+.cart:hover button {
+    color: white;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
 .added-btn {
     background: #ffd1d1 !important;
+}
+.title {
+    font-size: 15px;
+    height: 45px;
+     margin-top: 15px;
+}
+@media only screen and (max-width: 900px) {
+    .cart img {
+        height: 200px;
+    }
+    @media only screen and (max-width: 400px) {
+        .title {
+            font-size: 13px;
+            height: 45px;
+             margin-top: 15px;
+        }
+        
+    }
+    
 }

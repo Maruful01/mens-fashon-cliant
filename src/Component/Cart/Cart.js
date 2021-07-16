@@ -25,14 +25,14 @@ const Cart = (props) => {
          {/* <img onClick={()=>props.cartFunction.addToDetailHandler({img:img, title:title, price:price,  details: details})} src={img} alt="" /> */}
          <img onClick={()=>srtAdded (false)} src={img} alt="" />
          
-         <p style={{height: "45px", fontSize: "15px"}}>{title.substring(0, 50)}...</p>
+         <p className="title">{title.substring(0, 50)}...</p>
          <p style={{fontSize: "20px", color: "tomato"}}>৳ {price}</p>
          </Link>
         {/* {  
             added ? <button  className="added-btn">Added</button> :
             <span onClick={()=> srtAdded(true)}> <button > Add to cart</button> </span> 
         } */}
-        <button onClick={() => addToCartHandler()}> Add to cart</button>
+        <button className="add-to-cart" onClick={() => addToCartHandler()}> Add to cart</button>
          </div> 
     );
 };

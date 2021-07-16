@@ -6,6 +6,11 @@
    box-shadow: 1px 1px 5px #d6d5d5;
    margin: 10px;
    padding: 10px 50px 10px 50px;
+   height: 130px;
+}
+.cart-Container {
+    width: 45%;
+    margin: auto;
 }
 
 .shopping-cart img {
@@ -29,4 +34,38 @@
 }
 .remove-btn:hover {
   transform: scale(1.05);
+}
+@media only screen and (max-width: 1585px) {
+    .cart-Container {
+        width: 60%;
+    }
+    @media only screen and (max-width: 1150px) {
+        .cart-Container {
+            width: 70%;
+        }
+    }
+    @media only screen and (max-width: 870px) {
+        .cart-Container {
+            width: 90%;
+        }
+        .shopping-cart img {
+            height: 60px;
+            margin-right: 50px;
+        }
+        .shopping-cart p {
+            font-size: 15px;
+        }
+    }
+    @media only screen and (max-width: 550px) {
+        .cart-Container {
+            width: 98%;
+        }
+        .shopping-cart p {
+            font-size: 10px;
+        }
+        .shopping-cart .fas {
+            color: red;
+            font-size: 20px;
+        }
+    }
 }

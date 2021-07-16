@@ -11,7 +11,6 @@ const ShopingCart = () => {
 
     const addToQtyHandler = (id, qty) => {
         dispacth(addToCart(id, qty));
-
     }
 
     const removeCart = (id) => {
@@ -38,7 +37,7 @@ const ShopingCart = () => {
     return (
         <section>
             {
-                cartLength ?  <div style={{width: "40%", margin: "auto"}}>
+                cartLength ?  <div className="cart-Container">
 
                 {
                    cartItems.map (product=>  <CartBody product={product} addToQtyHandler={addToQtyHandler} removeCart={removeCart} > </CartBody>) 
@@ -46,7 +45,7 @@ const ShopingCart = () => {
                 <div className="total-price">
                     <h2>Subtotal {getCartCount()} items</h2>
                     <h3>Total price: {getCartSubTotal()} </h3> 
-                    <Link to="/address"> <button 
+                    <Link to="/confirmOrder"> <button 
                          style={{background: "none",
                           border: "none",
                            outline: "none",

@@ -10,7 +10,7 @@ const CartBody = (props) => {
         <div className="shopping-cart">
             <img src={img} alt="" />
             <div>
-            <p>{product}</p>
+            <p className="title">{product.substring(0, 30)}...</p>
             <p>Price: ${price * qty}</p>
             </div>
              <p>Qty 

@@ -7,6 +7,7 @@ import "firebase/analytics";
 import "firebase/auth";
 import "firebase/firestore";
 import { UserContext } from '../../App';
+import { useHistory } from 'react-router-dom';
 
 if (firebase.apps.length === 0) {
     firebase.initializeApp(firebaseConfig);
@@ -14,10 +15,20 @@ if (firebase.apps.length === 0) {
 
 const Login = () => {
 
+    let history = useHistory();
+
     const [loggedInUser, setLoggedInUser] = useContext( UserContext);
+    const [input, setInput] = useState ({ email: null, password: null})
+    const [data, setData] = useState({
+                                          email: null,
+                                          name: null,
+                                          mobile: null,
+                                          password: null
+                                        })
 
 
-    console.log (loggedInUser)
+    console.log ("data", data);
+    console.log ("input", input)
 
          //  google login
           const googleLogin = () => {
@@ -34,6 +45,7 @@ const Login = () => {
             newUser.name = user.displayName;
             newUser.image = user.photoURL;
             setLoggedInUser (newUser);
+            history.push("/confirmOrder");
 
            }).catch((error) => {
              var errorCode = error.code;
@@ -47,9 +59,39 @@ const Login = () => {
     const [ haveAccount, setHaveAccount ] = useState (false);
     
     const onChangeHandler = e => {
-       let isFormValid = e.target.value > 5;
-       console.log (e.target.value)
+        const inputEmail = {...input};
+        inputEmail.email = e.target.value;
+        setInput (inputEmail);
+       fetch ('https://immense-citadel-20616.herokuapp.com/users?email=' + e.target.value) 
+       .then (res => res.json())
+       .then (user => setData (user[0]))
     }
+
+    const inputPasswordHandler = e => {
+        const newPassword ={...input};
+        newPassword.password = e.target.value;
+        setInput (newPassword);
+     }
+
+             //    Login 
+             const click = (e) => {
+                let isPasswordAndEmailRight;
+                isPasswordAndEmailRight = input.password === data.password && input.email === data.email;
+
+                if (isPasswordAndEmailRight) {
+                    // const newUser = {...loggedInUser};
+                    // newUser.email = data.email;
+                    // newUser.name = data.firstName;
+                    // newUser.password = data.password;
+                    // newUser.mobile = data.mobile;
+                    setLoggedInUser (data);
+                    history.push("/confirmOrder");
+                }
+                
+                else {
+                    alert ("invalid email or password");
+                }
+            }
 
     const [password, setPassword] = useState (" ");
     const [confirmPassword, setConfirmPassword] = useState (" ");
@@ -83,13 +125,13 @@ const Login = () => {
 
            const onSubmit = (data) => {
             if (confirmPassword) {
-                fetch ('http://localhost:5000https://immense-citadel-20616.herokuapp.com/addUser', {
+                fetch ('https://immense-citadel-20616.herokuapp.com/addUser', {
                   method: 'POST',
                   headers: {'content-type': 'application/json'}, 
                   body: JSON.stringify (data)
                  })
                  .then (res => res.json())
-                 console.log(data);
+                 alert ("Successfully signed up")
                }
                else {
                 alert ("Wrong Input")
@@ -117,19 +159,16 @@ const Login = () => {
                   <button className="submit-btn" type="submit">Submit</button>
                </form>
                <p style={{marginLeft: "5px", color: "blue", cursor: 'pointer'}}>I have a account  <button onClick={()=>setHaveAccount(false)} style={{fontSize: '15px'}} className="submit-btn">Login</button></p>
-               <h3 style={{marginLeft: "5px", color: "gray"}}>Login Using</h3>
-               <button onClick={() => googleLogin()} className="submit-btn google"> <i class="fab fa-google-plus-g"></i> Google</button>
-               <button className="submit-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
            </div>
               :
            <div className="login">
-               <form action="" method="POST" onSubmit={handleSubmit(onSubmit)}>
+               <form action="">
                <h1>Login</h1>
                   <input {...register("email")} onChange={onChangeHandler} type="text" required placeholder="Email" />
                   <br />
-                  <input {...register("password")} onChange={onChangeHandler} type="password" required placeholder="Password" />
+                  <input {...register("password")} onChange={inputPasswordHandler} type="password" required placeholder="Password" />
                   <br />
-                  <button className="submit-btn" type="submit">Login</button>
+                  <button onClick={() => click ()} type="submit"  className="submit-btn">Login</button>
                </form>
                <p style={{marginLeft: "5px", color: "blue", cursor: 'pointer'}}>Create a new account  <button onClick={()=>setHaveAccount(true)} style={{fontSize: '15px'}} className="submit-btn">Sign Up</button></p>
                <h3 style={{marginLeft: "5px", color: "gray"}}>Login Using</h3>

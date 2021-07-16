@@ -65,3 +65,34 @@
     border: 1px solid #b1ffa6;
     font-weight: bold;
 }
+@media only screen and (max-width: 895px) {
+    .pd-component button {
+        width: 70%;
+        border: none;
+        outline: none;
+        background: none;
+        font-size: 13px;
+        margin: 10px;
+    }
+    .pd-component {
+        width: 98%;
+        margin: auto;
+        background: linear-gradient(-45deg, #ffd8cc, #fddbd5, #d6f4ff, #e2e2e2);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+        padding: 15px;
+        margin-top: 20px;
+    }
+    .pd-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    @media only screen and (max-width: 450px) {
+        .pd-grid img {
+            width: 200px;
+            height: 200px;
+            cursor: zoom-in;
+            margin-right: 10px;
+        }
+    }
+}
